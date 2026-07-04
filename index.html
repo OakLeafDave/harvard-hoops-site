@@ -6,10 +6,14 @@
 <title>Harvard Hoops — A Film Treatment</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:ital@1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
 
 <nav id="nav">
   <div class="nav-inner">
@@ -24,7 +28,17 @@
   </div>
 </nav>
 
-<header class="hero bleed">
+<div class="scene-dots" aria-hidden="true">
+  <a href="#top" class="scene-dot active" data-label="Open"></a>
+  <a href="#story" class="scene-dot" data-label="Story"></a>
+  <a href="#tone" class="scene-dot" data-label="Tone"></a>
+  <a href="#characters" class="scene-dot" data-label="Characters"></a>
+  <a href="#craft" class="scene-dot" data-label="Craft"></a>
+  <a href="#location" class="scene-dot" data-label="Location"></a>
+  <a href="#contact" class="scene-dot" data-label="Contact"></a>
+</div>
+
+<header class="hero bleed" id="top">
   <div class="bleed-bg bleed-bg--strong" style="background-image:url('images/court.jpg')"></div>
   <div class="bleed-overlay"></div>
   <svg class="court-lines" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
@@ -44,7 +58,7 @@
 
 <section class="logline" id="logline">
   <p class="label">Logline</p>
-  <p class="big-quote">When former Duke standout Tommy Amaker takes over Harvard basketball, he builds a team through an unorthodox Breakfast Club culture, asking players who question him as a basketball player to believe in something they have never seen work.</p>
+  <p class="big-quote serif">When former Duke standout Tommy Amaker takes over Harvard basketball, he builds a team through an unorthodox Breakfast Club culture, asking players who question him as a basketball player to believe in something they have never seen work.</p>
 </section>
 
 <section class="moodboard">
@@ -146,7 +160,8 @@
 </section>
 
 <section class="closing">
-  <p class="closing-quote">&ldquo;Harvard Hoops is about what it means to lead, to doubt yourself, and to build something real when no one expects it to work.&rdquo;</p>
+  <p class="fin-mark">Fin.</p>
+  <p class="closing-quote serif">&ldquo;Harvard Hoops is about what it means to lead, to doubt yourself, and to build something real when no one expects it to work.&rdquo;</p>
   <p class="closing-attr">— Oak Leaf Media</p>
 </section>
 
@@ -157,7 +172,11 @@
     <p class="label light">Contact</p>
     <h2>Let's talk.</h2>
     <a class="contact-email" href="mailto:dave@oakleafmedia.com">dave@oakleafmedia.com</a>
-    <p class="footer-note">Oak Leaf Media &middot; Harvard Hoops — A Film Treatment</p>
+    <div class="credits">
+      <span>A Film Treatment</span>
+      <span>Oak Leaf Media</span>
+      <span>Harvard Hoops</span>
+    </div>
   </div>
 </footer>
 
