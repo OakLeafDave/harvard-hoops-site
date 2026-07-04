@@ -309,6 +309,7 @@ section, footer {
 }
 .act:last-child { border-bottom: none; }
 .act-media { width: 120px; height: 120px; border-radius: 2px; }
+.act-media img { object-position: top; }
 .act-num {
   font-family: var(--serif-display);
   font-size: 56px;
