@@ -280,22 +280,32 @@ section, footer {
   font-weight: 400;
 }
 
-/* MOODBOARD */
+/* MOODBOARD — horizontal filmstrip; images keep their natural aspect ratio (no cropping) */
 .moodboard {
-  max-width: 1200px;
+  max-width: none;
   border-top: 1px solid var(--line);
-  padding-top: 100px;
-  padding-bottom: 20px;
+  padding: 100px 0 20px;
 }
-.moodboard .label { text-align: center; }
-.mood-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 140px;
-  gap: 16px;
+.moodboard .label { text-align: center; padding: 0 32px; }
+.mood-strip {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  padding: 40px 32px 20px;
 }
-.mood-item { grid-row: span 2; border-radius: 2px; }
-.mood-tall { grid-row: span 3; }
+.mood-item { height: 420px; flex-shrink: 0; position: relative; }
+.mood-item img { width: auto; height: 100%; }
+.mood-ref figcaption {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+  background: rgba(0,0,0,0.55);
+  padding: 4px 8px;
+}
 
 /* STORY */
 .story { border-top: 1px solid var(--line); }
@@ -354,7 +364,6 @@ section, footer {
   margin-top: 24px;
 }
 .char-card { border-top: 2px solid var(--red); padding-top: 20px; }
-.char-photo { width: 100%; aspect-ratio: 4 / 3; margin-bottom: 20px; border-radius: 2px; }
 .char-num {
   font-family: var(--serif-display);
   color: var(--grey);
@@ -478,6 +487,7 @@ footer h2 {
   .act-num { grid-column: 2; grid-row: 1; }
   .act-body { grid-column: 1 / -1; grid-row: 2; }
   section, footer { padding: 90px 24px; }
-  .mood-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 130px; }
+  .mood-item { height: 260px; }
+  .mood-strip { padding: 32px 24px 20px; }
   .location.bleed { padding: 100px 24px; }
 }
