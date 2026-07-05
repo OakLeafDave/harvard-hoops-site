@@ -583,7 +583,10 @@ footer h2 {
      scrolled into view when the page was captured. */
   .reveal { opacity: 1 !important; transform: none !important; }
 
-  /* Let each section actually be visible and start on a clean page. */
+  /* Let each section actually be visible and start on a clean page. Trim
+     the on-screen 140px top/bottom padding, which otherwise spills a
+     near-empty section over onto its own extra page before the break. */
+  section, footer { padding-top: 48px !important; padding-bottom: 48px !important; }
   .hero { min-height: 100vh; page-break-after: always; }
   .story, .script, .characters, .craft, .casting, .location, .closing { page-break-after: always; }
 
