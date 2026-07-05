@@ -8,6 +8,7 @@
   --serif-display: 'Anton', sans-serif;
   --serif-quote: 'Playfair Display', serif;
   --sans: 'Inter', sans-serif;
+  --script-font: 'Courier Prime', monospace;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -335,6 +336,37 @@ section, footer {
 }
 .act-body p { color: #cfcfca; font-size: 16px; max-width: 640px; }
 
+/* SCRIPT PAGE — an actual excerpt, set like a real screenplay page */
+.script { border-top: 1px solid var(--line); text-align: center; }
+.script .label { text-align: center; }
+.script-page {
+  position: relative;
+  text-align: left;
+  max-width: 640px;
+  margin: 40px auto 0;
+  padding: 56px 48px 64px;
+  background: #ece7dc;
+  color: #1a1a1a;
+  font-family: var(--script-font);
+  font-size: 14.5px;
+  line-height: 1.7;
+  box-shadow: 0 30px 70px rgba(0,0,0,0.55);
+}
+.script-pagenum {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  font-size: 13px;
+}
+.scr-action { margin: 0 0 14px; }
+.scr-black { font-weight: 700; }
+.scr-super { margin: 0 0 14px; font-style: italic; }
+.scr-heading { font-weight: 700; text-transform: uppercase; margin: 28px 0 14px; }
+.scr-transition { text-align: right; text-transform: uppercase; font-weight: 700; margin: 20px 0; }
+.scr-dialogue-block { max-width: 380px; margin: 0 auto 18px; }
+.scr-character { text-align: center; text-transform: uppercase; font-weight: 700; margin: 0 0 2px; }
+.scr-dialogue { margin: 0; padding: 0 8%; }
+
 /* TONE SPLIT */
 .tone-split {
   max-width: none;
@@ -490,4 +522,6 @@ footer h2 {
   .mood-item { height: 260px; }
   .mood-strip { padding: 32px 24px 20px; }
   .location.bleed { padding: 100px 24px; }
+  .script-page { padding: 40px 24px 48px; font-size: 13.5px; }
+  .scr-dialogue { padding: 0 2%; }
 }
