@@ -563,3 +563,63 @@ footer h2 {
   .script-arrow--prev { left: -14px; }
   .script-arrow--next { right: -14px; }
 }
+
+/* PRINT — export the whole treatment as a static PDF. Everything that's
+   normally revealed by scrolling or paged through interactively needs to
+   render fully at once instead. */
+@media print {
+  @page { size: letter; margin: 0; }
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+  html, body { background: var(--black) !important; }
+
+  /* Drop interactive chrome that means nothing on a printed page. */
+  #nav, .scene-dots, .cursor-dot, .grain, .vignette, .scroll-cue { display: none !important; }
+
+  /* Scroll-triggered reveals must all be visible, not just what had
+     scrolled into view when the page was captured. */
+  .reveal { opacity: 1 !important; transform: none !important; }
+
+  /* Let each section actually be visible and start on a clean page. */
+  .hero { min-height: 100vh; page-break-after: always; }
+  .story, .script, .characters, .craft, .casting, .location, .closing { page-break-after: always; }
+
+  /* Side-by-side image/text splits rely on a fixed-height grid row that
+     doesn't translate to paginated print. Stack them like the mobile
+     layout instead, so each half breaks cleanly on its own. */
+  .tone-split, .craft-split {
+    display: block !important;
+    page-break-after: always;
+  }
+  .tone-image, .craft-image { min-height: 280px !important; height: 280px !important; }
+
+  /* Moodboard: show every photo, wrapped into rows, instead of a
+     horizontally-scrolling filmstrip that only shows the first few. */
+  .mood-strip {
+    overflow: visible;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .mood-item { height: 220px !important; }
+
+  /* Script slider: print every page stacked in sequence with a page break
+     between each, instead of just whichever page was showing on-screen.
+     The on-screen 460px width is way too narrow for a print page, so each
+     page wraps into far more lines than it's actually designed for. Give
+     it a real screenplay-page width instead so one page = one PDF page. */
+  .script-arrow, .script-controls { display: none !important; }
+  .script-slider { max-width: 6.5in !important; }
+  .script-viewport { overflow: visible !important; box-shadow: none !important; }
+  .script-track { display: block !important; transform: none !important; }
+  .script-page {
+    width: 100% !important;
+    flex: none !important;
+    font-size: 13px !important;
+    page-break-after: always;
+    page-break-inside: avoid;
+  }
+  .script-page:last-child { page-break-after: auto; }
+}
