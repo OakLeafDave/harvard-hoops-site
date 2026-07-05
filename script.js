@@ -51,24 +51,30 @@ if (window.matchMedia('(pointer: fine)').matches) {
   });
 }
 
-// Script page slider — arrow buttons page through the screenplay excerpt.
+// Script page slider — arrow buttons page through the screenplay excerpt
+// two pages (one spread) at a time, like an open book.
 const scriptTrack = document.querySelector('.script-track');
 if (scriptTrack) {
-  const pages = scriptTrack.querySelectorAll('.script-page');
+  const spreads = [...scriptTrack.querySelectorAll('.script-spread')];
   const prevBtn = document.querySelector('.script-arrow[data-dir="-1"]');
   const nextBtn = document.querySelector('.script-arrow[data-dir="1"]');
   const counter = document.querySelector('.script-current');
+  const totalEl = document.querySelector('.script-total');
+  const labelEl = document.querySelector('.script-pages-label');
+  if (totalEl) totalEl.textContent = scriptTrack.querySelectorAll('.script-page').length;
   let current = 0;
 
   const render = () => {
     scriptTrack.style.transform = `translateX(-${current * 100}%)`;
-    counter.textContent = current + 1;
+    const nums = [...spreads[current].querySelectorAll('.script-pagenum')].map(el => el.textContent.replace('.', ''));
+    counter.textContent = nums.length > 1 ? `${nums[0]}–${nums[nums.length - 1]}` : nums[0];
+    if (labelEl) labelEl.textContent = nums.length > 1 ? 'Pages' : 'Page';
     prevBtn.disabled = current === 0;
-    nextBtn.disabled = current === pages.length - 1;
+    nextBtn.disabled = current === spreads.length - 1;
   };
 
   const go = (dir) => {
-    current = Math.min(pages.length - 1, Math.max(0, current + dir));
+    current = Math.min(spreads.length - 1, Math.max(0, current + dir));
     render();
   };
 
