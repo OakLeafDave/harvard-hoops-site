@@ -74,6 +74,17 @@ if (scriptTrack) {
 
   prevBtn.addEventListener('click', () => go(-1));
   nextBtn.addEventListener('click', () => go(1));
+
+  // Left/right arrow keys page through the excerpt when it's in view.
+  const scriptSection = document.getElementById('script');
+  window.addEventListener('keydown', (e) => {
+    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+    const rect = scriptSection.getBoundingClientRect();
+    const inView = rect.top < window.innerHeight && rect.bottom > 0;
+    if (!inView) return;
+    go(e.key === 'ArrowLeft' ? -1 : 1);
+  });
+
   render();
 }
 

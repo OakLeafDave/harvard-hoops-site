@@ -339,8 +339,8 @@ section, footer {
 /* SCRIPT SLIDER — an actual excerpt, set like real screenplay pages you page through */
 .script { border-top: 1px solid var(--line); text-align: center; }
 .script .label { text-align: center; }
-.script-slider { max-width: 640px; margin: 40px auto 0; }
-.script-viewport { overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,0.55); }
+.script-slider { position: relative; max-width: 460px; margin: 40px auto 0; }
+.script-viewport { overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.55); }
 .script-track { display: flex; transition: transform 0.5s ease; }
 .script-page {
   flex: 0 0 100%;
@@ -348,57 +348,60 @@ section, footer {
   box-sizing: border-box;
   position: relative;
   text-align: left;
-  padding: 56px 48px 64px;
+  padding: 36px 32px 44px;
   background: #ece7dc;
   color: #1a1a1a;
   font-family: var(--script-font);
-  font-size: 14.5px;
-  line-height: 1.7;
+  font-size: 11.5px;
+  line-height: 1.65;
 }
 .script-pagenum {
   position: absolute;
-  top: 24px;
-  right: 32px;
-  font-size: 13px;
+  top: 18px;
+  right: 24px;
+  font-size: 11px;
 }
-.scr-action { margin: 0 0 14px; }
+.scr-action { margin: 0 0 11px; }
 .scr-black { font-weight: 700; }
-.scr-super { margin: 0 0 14px; font-style: italic; }
-.scr-heading { font-weight: 700; text-transform: uppercase; margin: 28px 0 14px; }
-.scr-transition { text-align: right; text-transform: uppercase; font-weight: 700; margin: 20px 0; }
-.scr-dialogue-block { max-width: 380px; margin: 0 auto 18px; }
+.scr-super { margin: 0 0 11px; font-style: italic; }
+.scr-heading { font-weight: 700; text-transform: uppercase; margin: 22px 0 11px; }
+.scr-transition { text-align: right; text-transform: uppercase; font-weight: 700; margin: 16px 0; }
+.scr-dialogue-block { max-width: 300px; margin: 0 auto 14px; }
 .scr-character { text-align: center; text-transform: uppercase; font-weight: 700; margin: 0 0 2px; }
-.scr-parens { text-align: center; font-style: italic; margin: 0 0 6px; }
+.scr-parens { text-align: center; font-style: italic; margin: 0 0 5px; }
+.scr-dialogue { margin: 0; padding: 0 6%; }
 
-.script-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-  margin-top: 28px;
-}
+/* Side arrows sit on top of the page edges, vertically centered, so paging
+   through the excerpt doesn't require reaching for controls underneath. */
 .script-arrow {
-  width: 44px;
-  height: 44px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  border: 1px solid var(--line);
-  background: transparent;
+  border: 1px solid rgba(0,0,0,0.15);
+  background: rgba(20,18,15,0.55);
+  backdrop-filter: blur(3px);
   color: var(--off-white);
-  font-size: 18px;
+  font-size: 16px;
   font-family: inherit;
   cursor: pointer;
   transition: background 0.2s ease, border-color 0.2s ease;
 }
-.script-arrow:hover:not(:disabled) { background: rgba(255,255,255,0.08); border-color: var(--off-white); }
+.script-arrow--prev { left: -20px; }
+.script-arrow--next { right: -20px; }
+.script-arrow:hover:not(:disabled) { background: rgba(214,40,40,0.75); border-color: rgba(255,255,255,0.4); }
 .script-arrow:disabled { opacity: 0.3; cursor: default; }
+
+.script-controls { margin-top: 20px; }
 .script-counter {
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   color: var(--grey);
   text-transform: uppercase;
-  min-width: 60px;
 }
-.scr-dialogue { margin: 0; padding: 0 8%; }
 
 /* TONE SPLIT */
 .tone-split {
@@ -554,6 +557,9 @@ footer h2 {
   .mood-item { height: 260px; }
   .mood-strip { padding: 32px 24px 20px; }
   .location.bleed { padding: 100px 24px; }
-  .script-page { padding: 40px 24px 48px; font-size: 13.5px; }
+  .script-page { padding: 28px 20px 36px; font-size: 10.5px; }
   .scr-dialogue { padding: 0 2%; }
+  .script-arrow { width: 34px; height: 34px; font-size: 14px; }
+  .script-arrow--prev { left: -14px; }
+  .script-arrow--next { right: -14px; }
 }
