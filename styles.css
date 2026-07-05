@@ -336,21 +336,24 @@ section, footer {
 }
 .act-body p { color: #cfcfca; font-size: 16px; max-width: 640px; }
 
-/* SCRIPT PAGE — an actual excerpt, set like a real screenplay page */
+/* SCRIPT SLIDER — an actual excerpt, set like real screenplay pages you page through */
 .script { border-top: 1px solid var(--line); text-align: center; }
 .script .label { text-align: center; }
+.script-slider { max-width: 640px; margin: 40px auto 0; }
+.script-viewport { overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,0.55); }
+.script-track { display: flex; transition: transform 0.5s ease; }
 .script-page {
+  flex: 0 0 100%;
+  width: 100%;
+  box-sizing: border-box;
   position: relative;
   text-align: left;
-  max-width: 640px;
-  margin: 40px auto 0;
   padding: 56px 48px 64px;
   background: #ece7dc;
   color: #1a1a1a;
   font-family: var(--script-font);
   font-size: 14.5px;
   line-height: 1.7;
-  box-shadow: 0 30px 70px rgba(0,0,0,0.55);
 }
 .script-pagenum {
   position: absolute;
@@ -365,6 +368,36 @@ section, footer {
 .scr-transition { text-align: right; text-transform: uppercase; font-weight: 700; margin: 20px 0; }
 .scr-dialogue-block { max-width: 380px; margin: 0 auto 18px; }
 .scr-character { text-align: center; text-transform: uppercase; font-weight: 700; margin: 0 0 2px; }
+.scr-parens { text-align: center; font-style: italic; margin: 0 0 6px; }
+
+.script-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 28px;
+}
+.script-arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--off-white);
+  font-size: 18px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.script-arrow:hover:not(:disabled) { background: rgba(255,255,255,0.08); border-color: var(--off-white); }
+.script-arrow:disabled { opacity: 0.3; cursor: default; }
+.script-counter {
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: var(--grey);
+  text-transform: uppercase;
+  min-width: 60px;
+}
 .scr-dialogue { margin: 0; padding: 0 8%; }
 
 /* TONE SPLIT */

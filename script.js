@@ -51,6 +51,32 @@ if (window.matchMedia('(pointer: fine)').matches) {
   });
 }
 
+// Script page slider — arrow buttons page through the screenplay excerpt.
+const scriptTrack = document.querySelector('.script-track');
+if (scriptTrack) {
+  const pages = scriptTrack.querySelectorAll('.script-page');
+  const prevBtn = document.querySelector('.script-arrow[data-dir="-1"]');
+  const nextBtn = document.querySelector('.script-arrow[data-dir="1"]');
+  const counter = document.querySelector('.script-current');
+  let current = 0;
+
+  const render = () => {
+    scriptTrack.style.transform = `translateX(-${current * 100}%)`;
+    counter.textContent = current + 1;
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === pages.length - 1;
+  };
+
+  const go = (dir) => {
+    current = Math.min(pages.length - 1, Math.max(0, current + dir));
+    render();
+  };
+
+  prevBtn.addEventListener('click', () => go(-1));
+  nextBtn.addEventListener('click', () => go(1));
+  render();
+}
+
 // Subtle parallax on the hero and footer background photography.
 const parallaxEls = document.querySelectorAll('.hero .bleed-bg, footer .bleed-bg');
 const onParallax = () => {
