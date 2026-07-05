@@ -444,21 +444,20 @@ section, footer {
 }
 .char-card p { font-size: 15px; color: #b9b9b4; }
 
-/* CRAFT SPLIT */
+/* CRAFT — two paired image/text beats, alternating sides */
+.craft { border-top: 1px solid var(--line); max-width: none; }
 .craft-split {
-  max-width: none;
   padding: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: stretch;
   background: var(--near-black);
-  border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
-.craft-image { min-height: 480px; order: 2; }
+.craft-split--reverse .craft-image { order: 2; }
+.craft-image { min-height: 480px; }
 .craft-copy { padding: 100px 64px; align-self: center; }
-.craft-text { font-size: 17px; color: #dcdcd7; margin-bottom: 56px; max-width: 520px; }
-.craft-text:last-child { margin-bottom: 0; }
+.craft-text { font-size: 17px; color: #dcdcd7; margin-bottom: 0; max-width: 520px; }
 
 /* CASTING */
 .casting { background: var(--near-black); max-width: none; padding: 140px 32px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
