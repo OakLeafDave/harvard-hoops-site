@@ -337,32 +337,23 @@ section, footer {
 .act-body p { color: #cfcfca; font-size: 16px; max-width: 640px; }
 
 /* SCRIPT SLIDER — an actual excerpt, set like real screenplay pages you page
-   through two at a time, like an open book. */
+   through one at a time. */
 .script { border-top: 1px solid var(--line); text-align: center; }
 .script .label { text-align: center; }
-.script-slider { position: relative; max-width: 944px; margin: 40px auto 0; }
+.script-slider { position: relative; max-width: 680px; margin: 40px auto 0; }
 .script-viewport { overflow: hidden; }
 .script-track { display: flex; transition: transform 0.5s ease; }
-.script-spread {
+.script-page {
   flex: 0 0 100%;
   width: 100%;
   box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-}
-.script-page {
-  flex: 0 1 460px;
-  width: 100%;
-  max-width: 460px;
-  box-sizing: border-box;
   position: relative;
   text-align: left;
-  padding: 40px 36px 48px;
+  padding: 44px 40px 52px;
   background: #ece7dc;
   color: #1a1a1a;
   font-family: var(--script-font);
-  font-size: 12.5px;
+  font-size: 13.5px;
   line-height: 1.65;
   box-shadow: 0 20px 50px rgba(0,0,0,0.5);
 }
@@ -377,7 +368,7 @@ section, footer {
 .scr-super { margin: 0 0 11px; font-style: italic; }
 .scr-heading { font-weight: 700; text-transform: uppercase; margin: 22px 0 11px; }
 .scr-transition { text-align: right; text-transform: uppercase; font-weight: 700; margin: 16px 0; }
-.scr-dialogue-block { max-width: 320px; margin: 0 auto 14px; }
+.scr-dialogue-block { max-width: 380px; margin: 0 auto 14px; }
 .scr-character { text-align: center; text-transform: uppercase; font-weight: 700; margin: 0 0 2px; }
 .scr-parens { text-align: center; font-style: italic; margin: 0 0 5px; }
 .scr-dialogue { margin: 0; padding: 0 6%; }
@@ -568,10 +559,7 @@ footer h2 {
   .mood-item { height: 260px; }
   .mood-strip { padding: 32px 24px 20px; }
   .location.bleed { padding: 100px 24px; }
-  /* Two pages side by side won't fit a phone screen — stack them instead,
-     still advancing a full spread (two pages) per arrow tap. */
-  .script-spread { flex-direction: column; gap: 16px; }
-  .script-page { padding: 28px 20px 36px; font-size: 10.5px; max-width: none; }
+  .script-page { padding: 28px 20px 36px; font-size: 10.5px; }
   .scr-dialogue { padding: 0 2%; }
   .script-arrow { width: 34px; height: 34px; font-size: 14px; }
   .script-arrow--prev { left: -14px; }
@@ -624,21 +612,18 @@ footer h2 {
 
   /* Script slider: print every page stacked in sequence with a page break
      between each, instead of just whichever page was showing on-screen.
-     The on-screen 460px width is way too narrow for a print page, so each
-     page wraps into far more lines than it's actually designed for. Give
-     it a real screenplay-page width instead so one page = one PDF page. */
+     The on-screen width is still narrower than a print page, so give it a
+     real screenplay-page width instead so one page = one PDF page. */
   .script-arrow, .script-controls { display: none !important; }
   .script-slider { max-width: 6.5in !important; }
   .script-viewport { overflow: visible !important; box-shadow: none !important; }
   .script-track { display: block !important; transform: none !important; }
-  .script-spread { display: block !important; }
   .script-page {
     width: 100% !important;
-    max-width: none !important;
     flex: none !important;
     font-size: 13px !important;
     page-break-after: always;
     page-break-inside: avoid;
   }
-  .script-spread:last-child .script-page:last-child { page-break-after: auto; }
+  .script-page:last-child { page-break-after: auto; }
 }
